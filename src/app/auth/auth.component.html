@@ -1,0 +1,24 @@
+<div class="background">
+  <div class="container">
+    <mat-card class="login-card">
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+    
+      <mat-card-content>
+        <form>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Email" type="email" [(ngModel)]="email" name="email" required>
+          </mat-form-field>
+    
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Identificação" type="id" [(ngModel)]="id" name="id" required>
+          </mat-form-field>
+    
+          <button mat-raised-button color="primary" (click)="login()">Entrar</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+    
+  </div>
+</div>

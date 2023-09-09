@@ -15,6 +15,7 @@ export class FullComponent implements OnDestroy, AfterViewInit {
   private _mobileQueryListener: () => void;
 
   constructor(
+    
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
     public menuItems: MenuItems
@@ -27,5 +28,8 @@ export class FullComponent implements OnDestroy, AfterViewInit {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-  ngAfterViewInit() {}
+  ngAfterViewInit() {
+
+
+  }
 }

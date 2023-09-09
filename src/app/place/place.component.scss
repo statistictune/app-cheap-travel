@@ -1,0 +1,26 @@
+// Seu arquivo SCSS
+
+.background {
+    background-image: url('../../assets/images/airplane.webp'); // Substitua pelo caminho da sua imagem
+    background-size: cover; // Ajusta o tamanho da imagem para cobrir todo o elemento pai
+    background-repeat: no-repeat; // Impede que a imagem de fundo seja repetida
+    background-position: center center; // Centraliza a imagem horizontal e verticalmente
+    height: 100vh; // Garante que o elemento pai ocupe toda a altura da tela
+    display: flex;
+    align-items: center; // Centraliza o conteúdo verticalmente
+    justify-content: center; // Centraliza o conteúdo horizontalmente
+  }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; // Isso garante que o contêiner ocupe toda a altura da tela
+}
+
+mat-card {
+    width: 100%; // Defina a largura do card para 80% da tela
+    max-width: 1000px; // Defina um valor máximo para a largura do card, se desejar
+    text-align: center; // Centralize o conteúdo do card horizontalmente
+    padding: 20px; // Adicione algum espaço interno, se necessário
+}

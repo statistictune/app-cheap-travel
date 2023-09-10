@@ -35,5 +35,11 @@ export class AuthService {
 
     // return this.http.post(url, jsonData, { headers });
   }
+  isLoggedIn(){
+    if (localStorage.getItem('user_id') != undefined)
+      return true
+    else  
+      return false
+  }
 
 }

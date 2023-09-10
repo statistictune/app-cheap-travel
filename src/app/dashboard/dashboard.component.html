@@ -1,31 +1,36 @@
-<!-- ============================================================== -->
-<!-- Simple four boxes Row -->
-<!-- ============================================================== -->
-<div class="row">
-  <!-- column -->
-  <div class="col-lg-8 col-sm-12">
-    <app-sales-overview></app-sales-overview>
-  </div>
-  <!-- column -->
-  <!-- column -->
-  <div class="col-lg-4 col-sm-12">
-    <app-our-visiter></app-our-visiter>
-  </div>
-  <!-- column -->
+<div style="display: flex; justify-content: space-between;">
+  <mat-card style="width: 500px;">
+    <!-- pie-chart.component.html -->
+    <div class="chart-container">
+      <apx-chart type="pie" [series]="pieChartOptions.series" [chart]="pieChartOptions.chart" [yaxis]="pieChartOptions.yaxis"
+        [legend]="pieChartOptions.legend" [fill]="pieChartOptions.fill" [stroke]="pieChartOptions.stroke"
+        [tooltip]="pieChartOptions.tooltip" [xaxis]="pieChartOptions.xaxis" [grid]="pieChartOptions.grid"></apx-chart>
+    </div>
+  </mat-card>
+  <mat-card style="width: 500px;">
+    <!-- pie-chart.component.html -->
+    <div class="chart-container">
+      <apx-chart type="pie" [series]="pieChartOptions.series" [chart]="pieChartOptions.chart" [yaxis]="pieChartOptions.yaxis"
+        [legend]="pieChartOptions.legend" [fill]="pieChartOptions.fill" [stroke]="pieChartOptions.stroke"
+        [tooltip]="pieChartOptions.tooltip" [xaxis]="pieChartOptions.xaxis" [grid]="pieChartOptions.grid"></apx-chart>
+    </div>
+  </mat-card>
 </div>
 
-<!-- ============================================================== -->
-<!-- Image Card row-->
-<!-- ============================================================== -->
-<div class="row">
-  <!-- Card column -->
-  <div class="col-lg-3 col-sm-12">
-    <app-profile></app-profile>
-    <app-contacts></app-contacts>
+
+<mat-card>
+  <div>
+    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels"
+      [plotOptions]="chartOptions.plotOptions" [yaxis]="chartOptions.yaxis" [legend]="chartOptions.legend"
+      [fill]="chartOptions.fill" [stroke]="chartOptions.stroke" [tooltip]="chartOptions.tooltip"
+      [xaxis]="chartOptions.xaxis" [grid]="chartOptions.grid">
+    </apx-chart>
   </div>
-  <!-- Card column -->
-  <!-- Card column -->
-  <div class="col-lg-9 col-sm-12">
-    <app-activity-timeline></app-activity-timeline>
+</mat-card>
+<mat-card>
+  <div>
+    <apx-chart [series]="seriesOptions.series" [chart]="seriesOptions.chart" [yaxis]="seriesOptions.yaxis"
+      [legend]="seriesOptions.legend" [fill]="seriesOptions.fill" [stroke]="seriesOptions.stroke"
+      [tooltip]="seriesOptions.tooltip" [xaxis]="seriesOptions.xaxis" [grid]="seriesOptions.grid"></apx-chart>
   </div>
-</div>
+</mat-card>

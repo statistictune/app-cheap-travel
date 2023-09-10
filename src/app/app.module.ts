@@ -18,32 +18,38 @@ import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
 import { AuthComponent } from './auth/auth.component';
 import { PlaceComponent } from './place/place.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { HomeComponent } from './home/home.component';
+import { PlaceDialogComponent } from "./place/place-dialog/place-dialog.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FullComponent,
-    AppHeaderComponent,
-    SpinnerComponent,
-    AuthComponent,
-    PlaceComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    DemoMaterialModule,
-    FormsModule,
-    HttpClientModule,
-    SharedModule,
-    RouterModule.forRoot(AppRoutes),
-    AppSidebarComponent
-  ],
-  providers: [
-    {
-      provide: LocationStrategy,
-      useClass: PathLocationStrategy
-    }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        FullComponent,
+        AppHeaderComponent,
+        SpinnerComponent,
+        AuthComponent,
+        PlaceComponent,
+        HomeComponent
+    ],
+    providers: [
+        {
+            provide: LocationStrategy,
+            useClass: PathLocationStrategy
+        }
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        DemoMaterialModule,
+        FormsModule,
+        HttpClientModule,
+        SharedModule,
+        RouterModule.forRoot(AppRoutes),
+        AppSidebarComponent,
+        NgApexchartsModule,
+        PlaceDialogComponent
+    ]
 })
 export class AppModule { }

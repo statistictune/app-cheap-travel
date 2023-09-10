@@ -1,7 +1,7 @@
 // Seu arquivo SCSS
 
 .background {
-    background-image: url('../../assets/images/airplane.webp'); // Substitua pelo caminho da sua imagem
+    background-image: url('../../assets/images/airplane.jpg'); // Substitua pelo caminho da sua imagem
     background-size: cover; // Ajusta o tamanho da imagem para cobrir todo o elemento pai
     background-repeat: no-repeat; // Impede que a imagem de fundo seja repetida
     background-position: center center; // Centraliza a imagem horizontal e verticalmente
@@ -11,16 +11,24 @@
     justify-content: center; // Centraliza o conteúdo horizontalmente
   }
 
-.container {
+  .container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end; /* Alinhe à direita */
     align-items: center;
-    height: 100vh; // Isso garante que o contêiner ocupe toda a altura da tela
-}
-
-mat-card {
-    width: 100%; // Defina a largura do card para 80% da tela
-    max-width: 1000px; // Defina um valor máximo para a largura do card, se desejar
-    text-align: center; // Centralize o conteúdo do card horizontalmente
-    padding: 20px; // Adicione algum espaço interno, se necessário
-}
+    height: 100%;
+    width: 100%;
+    padding: 20px; /* Adicione margem interna, se necessário */
+  }
+  
+  .login-card {
+    text-align: center;
+    width: 100%; /* Ocupa toda a largura disponível */
+    max-width: 400px; /* Largura máxima do mat-card */
+    flex-grow: 1; /* Expande para ocupar o espaço disponível na lateral direita */
+    flex-shrink: 1; /* Permite encolher, se necessário */
+  }
+  
+  .company-title {
+    font-size: 24px;
+    font-weight: bold;
+  }

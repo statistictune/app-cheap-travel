@@ -1,0 +1,42 @@
+<mat-card style="padding: 20px;">
+  <div style="text-align: center;">
+    <h1>Travel Definitions</h1>
+  </div>
+  <form [formGroup]="placeForm" (ngSubmit)="onSubmit()">
+    <div fxLayout="row" fxLayoutGap="10px">
+      <mat-form-field fxFlex floatLabel="always">
+        <mat-label>Origin</mat-label>
+        <input matInput formControlName="origin" required [disabled]="!isPostOperation">
+      </mat-form-field>
+      <mat-form-field fxFlex floatLabel="always">
+        <mat-label>Destination</mat-label>
+        <input matInput formControlName="destination" required [disabled]="!isPostOperation">
+      </mat-form-field>
+    </div>
+    
+    <div fxLayout="row" fxLayoutGap="10px">
+      <mat-form-field fxFlex floatLabel="always">
+        <mat-label>Departure Date</mat-label>
+        <input matInput [matDatepicker]="partidaDatepicker" formControlName="departure_date" required [disabled]="!isPostOperation">
+        <mat-datepicker-toggle matSuffix [for]="partidaDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #partidaDatepicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field fxFlex floatLabel="always">
+        <mat-label>Return Date</mat-label>
+        <input matInput [matDatepicker]="retornoDatepicker" formControlName="return_date" required [disabled]="!isPostOperation">
+        <mat-datepicker-toggle matSuffix [for]="retornoDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #retornoDatepicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    
+
+    <mat-form-field floatLabel="always">
+      <mat-label>Target (R$)</mat-label>
+      <input matInput type="number" formControlName="min_value" required>
+    </mat-form-field>
+
+    <div class="mat-button-wrapper" style="text-align: right;">
+      <button type="submit" mat-raised-button color="primary">Salvar</button>
+    </div>
+  </form>
+</mat-card>

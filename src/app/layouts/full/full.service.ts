@@ -15,7 +15,6 @@ export class FullService {
   constructor(private http: HttpClient) { }
 
   getUser(user: GetUserModel): Observable<any> {
-
     const url = `${this.urlPlace}/get_user/${user.id}`; // Substitua com sua URL de endpoint
 
     return this.http.get(url);

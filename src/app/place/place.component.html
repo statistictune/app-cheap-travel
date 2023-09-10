@@ -1,57 +1,76 @@
-<div>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container matColumnDef="datetime_register">
-      <th mat-header-cell *matHeaderCellDef> Data de Registro </th>
-      <td mat-cell *matCellDef="let element">{{ element.datetime_register | date:'medium' }}</td>
-    </ng-container>
+<mat-card>
+  <mat-card-content>
 
-    <ng-container matColumnDef="origin">
-      <th mat-header-cell *matHeaderCellDef> Origem </th>
-      <td mat-cell *matCellDef="let element">{{ element.origin }}</td>
-    </ng-container>
 
-    <ng-container matColumnDef="destination">
-      <th mat-header-cell *matHeaderCellDef> Destino </th>
-      <td mat-cell *matCellDef="let element">{{ element.destination }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="departure_date">
-      <th mat-header-cell *matHeaderCellDef> Data de Partida </th>
-      <td mat-cell *matCellDef="let element">{{ element.departure_date | date:'medium' }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="return_date">
-      <th mat-header-cell *matHeaderCellDef> Data de Retorno </th>
-      <td mat-cell *matCellDef="let element">{{ element.return_date | date:'medium' }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="min_value">
-      <th mat-header-cell *matHeaderCellDef> Valor Mínimo </th>
-      <td mat-cell *matCellDef="let element">R$ {{ element.min_value | number:'1.2-2' }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="active">
-      <th mat-header-cell *matHeaderCellDef> Status </th>
-      <td mat-cell *matCellDef="let element">{{ element.active ? 'Ativo' : 'Inativo' }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="menu">
-      <th mat-header-cell *matHeaderCellDef> Menu </th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon>more_vert</mat-icon>
+    <div class="button-container">
+      <div class="title-container">
+        <mat-card-title>Places List</mat-card-title>
+      </div>
+      <div class="button-wrapper">
+        <button mat-fab color="primary" (click)="openDialog(true)">
+          <mat-icon>add</mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="openMenu(element, 'Editar')">Editar</button>
-          <button mat-menu-item (click)="openMenu(element, 'Status')">{{ element.active ? 'Inativar' : 'Ativar' }}</button>
-          <button mat-menu-item (click)="openMenu(element, 'Excluir')">Excluir</button>
-          <!-- Adicione mais opções de menu conforme necessário -->
-        </mat-menu>
-      </td>
-    </ng-container>
+      </div>
+    </div>
+    
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
 
-</div>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="datetime_register">
+        <th mat-header-cell *matHeaderCellDef> Data de Registro </th>
+        <td mat-cell *matCellDef="let element">{{ element.datetime_register | date:'medium' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="origin">
+        <th mat-header-cell *matHeaderCellDef> Origem </th>
+        <td mat-cell *matCellDef="let element">{{ element.origin }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="destination">
+        <th mat-header-cell *matHeaderCellDef> Destino </th>
+        <td mat-cell *matCellDef="let element">{{ element.destination }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="departure_date">
+        <th mat-header-cell *matHeaderCellDef> Data de Partida </th>
+        <td mat-cell *matCellDef="let element">{{ element.departure_date | date:'medium' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="return_date">
+        <th mat-header-cell *matHeaderCellDef> Data de Retorno </th>
+        <td mat-cell *matCellDef="let element">{{ element.return_date | date:'medium' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="min_value">
+        <th mat-header-cell *matHeaderCellDef> Target</th>
+        <td mat-cell *matCellDef="let element">R$ {{ element.min_value | number:'1.2-2' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let element">{{ element.active ? 'Ativo' : 'Inativo' }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="menu">
+        <th mat-header-cell *matHeaderCellDef> Menu </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openMenu(element, 'Editar')">Editar</button>
+            <button mat-menu-item (click)="openMenu(element, 'Status')">{{ element.active ? 'Inativar' : 'Ativar'
+              }}</button>
+            <button mat-menu-item (click)="openMenu(element, 'Excluir')">Excluir</button>
+            <!-- Adicione mais opções de menu conforme necessário -->
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+
+</mat-card>

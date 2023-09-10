@@ -25,6 +25,23 @@ export interface PlaceModel {
     active: boolean
 }
 
+export interface PostPlaceModel {
+    user_id: string,
+    origin: string,
+    destination: string,
+    departure_date: Date,
+    return_date: Date,
+    min_value: number,
+}
+
+export interface PutPlaceModel {
+    id: string,
+    user_id: string,
+    min_value: number
+}
+
+
+
 
 
 

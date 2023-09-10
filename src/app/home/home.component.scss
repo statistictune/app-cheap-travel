@@ -1,0 +1,15 @@
+.background {
+    // background-image: url('../../assets/images/cheaptravel_logo.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    max-width: 80%;
+    width: 50%;
+}

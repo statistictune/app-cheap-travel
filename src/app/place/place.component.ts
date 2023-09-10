@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ChangeStatusPlaceModel, GetPlacesModel, PlaceModel} from './models/place.model';
+import { ChangeStatusPlaceModel, GetPlacesModel, PlaceModel } from './models/place.model';
 import { PlaceService } from './place.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { PlaceDialogComponent } from './place-dialog/place-dialog.component';
+
 @Component({
   selector: 'app-place',
   templateUrl: './place.component.html',
@@ -10,7 +13,8 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class PlaceComponent implements OnInit {
 
-  id: string = ''
+  isPostOperation = true;
+  user_id: string = ''
   displayedColumns: string[] = [
     'datetime_register',
     'origin',
@@ -22,17 +26,16 @@ export class PlaceComponent implements OnInit {
     'menu'
   ];
 
+
   dataSource = new MatTableDataSource<PlaceModel>;
 
-  constructor(private route: ActivatedRoute, private placeService: PlaceService) {
-    this.route.params.subscribe(params => {
-      this.id = `${+params['id']}`;
-    });
+  constructor(private route: ActivatedRoute, private placeService: PlaceService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource<PlaceModel>([]);
   }
 
   ngOnInit() {
-    var place: GetPlacesModel = { user_id: this.id }
+    this.user_id = `${localStorage.getItem('user_id')}`
+    var place: GetPlacesModel = { user_id: this.user_id }
 
     this.placeService.getPlaces(place);
 
@@ -45,7 +48,7 @@ export class PlaceComponent implements OnInit {
   openMenu(element: PlaceModel, option: string) {
     // Lógica para lidar com as opções do menu
     if (option === 'Editar') {
-      // Implemente a lógica de edição aqui
+      this.openDialog(false, element)
     } else if (option === 'Excluir') {
       // Implemente a lógica de exclusão aqui
     }
@@ -54,12 +57,50 @@ export class PlaceComponent implements OnInit {
     }
   }
 
-  changeStatusPlace(element: PlaceModel){
+  changeStatusPlace(element: PlaceModel) {
     var changeStatus: ChangeStatusPlaceModel = {
       id: element.id,
-      user_id: element.user_id, 
+      user_id: element.user_id,
       active: !element.active
     }
     this.placeService.changeStatusPlace(changeStatus)
   }
+
+  adicionar() {
+
+    this.isPostOperation = true;
+
+    const dialogRef = this.dialog.open(PlaceDialogComponent, {
+      width: '560px',
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.placeService.postPlace(result)
+    });
+  }
+
+  openDialog(post: boolean, place?: PlaceModel): void {
+
+    this.isPostOperation = post;
+
+    const dialogRef = this.dialog.open(PlaceDialogComponent, {
+      width: '560px',
+      data: {
+        place: place,
+        isPostOperation: this.isPostOperation // Passa o valor aqui
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result != undefined)
+        if(!this.isPostOperation)
+          this.placeService.putPlace(result)
+        else
+          this.placeService.postPlace(result)
+    });
+  }
+
+
 }

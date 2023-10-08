@@ -21,6 +21,8 @@ import { PlaceComponent } from './place/place.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { HomeComponent } from './home/home.component';
 import { PlaceDialogComponent } from "./place/place-dialog/place-dialog.component";
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
     declarations: [
@@ -49,7 +51,9 @@ import { PlaceDialogComponent } from "./place/place-dialog/place-dialog.componen
         RouterModule.forRoot(AppRoutes),
         AppSidebarComponent,
         NgApexchartsModule,
-        PlaceDialogComponent
+        PlaceDialogComponent,
+        MatMenuModule,
+        MatButtonModule
     ]
 })
 export class AppModule { }
